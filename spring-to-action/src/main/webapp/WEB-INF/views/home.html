@@ -1,17 +1,22 @@
 <html layout:decorate="~{layouts/main}">
-  <head>
-    <title>Authority Matcher</title>
-  </head>
-  <body>
-   <div layout:fragment="content">
-      <div class="jumbotron col-md-12">
-
-		<h1>Congratulation!</h1>
-		<p>
-		You did it. This basic webapp is all set up now. Try to login as "admin" with password "admin".
-		</p>
-
-      </div>
-   </div>
-  </body>
+<head>
+<title>Authority Matcher</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<div th:if="${msg}" class="alert alert-info" role="alert">[[${msg}]]</div>
+		<ul class="list-group">
+			<li th:each="book : ${books}" class="list-group-item clearfix">
+				<i>[[${book.title}]]</i> by <b>[[${book.author}]]</b> 
+				<span th:if="${not book.available}" class="label label-warning">Not Available</span> 
+				<span th:if="${book.available}" class="label label-info">Available</span>
+				<div sec:authorize="isAuthenticated()">
+					<form th:action="@{|/auth/book/${book.id}/borrow|}" method="POST">
+						<button class="pull-right btn btn-default btn-sm" type="submit" th:disabled=${!book.available}>Borrow</button>
+					</form>
+				</div>
+			</li>
+		</ul>
+	</div>
+</body>
 </html>

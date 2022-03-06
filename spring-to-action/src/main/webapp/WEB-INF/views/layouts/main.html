@@ -51,6 +51,10 @@
 	          	</li>
 	          	
 	          	<li sec:authorize="isAuthenticated()" role="presentation">
+	         	 	<a title="" th:href="@{borrowedBooksList}">Borrowed Books</a>
+	          	</li>
+	          	
+	          	<li sec:authorize="isAuthenticated()" role="presentation">
 	         	 	<form th:action="@{/logout}" method="POST">
 	         	 	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 	  				<button class="btn-link" type="submit" title="Logout"><i class="fas fa-sign-out-alt" aria-hidden="true"></i></button>

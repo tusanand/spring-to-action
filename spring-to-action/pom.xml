@@ -17,8 +17,8 @@
         
         <db.driver>com.mysql.jdbc.Driver</db.driver>
         <db.database.url>jdbc:mysql://localhost:3306/springaction?serverTimezone=UTC</db.database.url>
-        <db.user>tutorial</db.user>
-        <db.password>tutorial</db.password>
+        <db.user>root</db.user>
+        <db.password>root</db.password>
 
         <log.level>info</log.level>
     </properties>

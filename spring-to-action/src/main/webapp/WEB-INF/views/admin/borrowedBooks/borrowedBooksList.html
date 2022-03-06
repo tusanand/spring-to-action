@@ -1,0 +1,20 @@
+<html layout:decorate="~{layouts/main}">
+<head>
+<title>Library App</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<div th:if="${msg}" class="alert alert-info" role="alert">[[${msg}]]</div>
+		<ul class="list-group">
+			<li th:each="book : ${borrowedBooks}"
+				class="list-group-item clearfix"><i>[[${book.title}]]</i> by <b>[[${book.author}]]</b>
+				<div>
+					<form th:action="@{|/auth/book/${book.id}/return|}" method="POST">
+						<button class="pull-right btn btn-default btn-sm" type="submit">Return</button>
+					</form>
+				</div>
+			</li>
+		</ul>
+	</div>
+</body>
+</html>

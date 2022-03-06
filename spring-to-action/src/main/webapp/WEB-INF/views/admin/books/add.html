@@ -1,0 +1,25 @@
+<html layout:decorate="~{layouts/main}">
+  <head>
+    <title>Library App</title>
+  </head>
+  <body>
+   <div layout:fragment="content">
+
+    <form action="#" th:action="@{/admin/book/add}" method="POST" th:object="${book}">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+        
+        <label>Title: </label>
+        <input th:field="*{title}" class="form-control input-sm"></input>
+        <p class="text-danger"><th:errors path="title"/></p>
+        
+        <label>Author: </label>
+        <input th:field="*{author}" class="form-control input-sm"></input>
+        <p class="text-danger"><th:errors path="author"/></p>
+    
+        <div style="padding-top: 20px;">
+        <button class="btn btn-sm btn-primary pull-right">Add Book</button>
+        </div>
+    </form>
+   </div>
+  </body>
+</html>
